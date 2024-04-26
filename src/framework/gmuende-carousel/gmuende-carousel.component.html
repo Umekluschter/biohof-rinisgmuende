@@ -1,0 +1,12 @@
+<div class="carousel-container">
+    @for (carouselConfig of carouselConfigs; let index = $index; track index) {
+    <div [id]="index" class="slide" [class.active]="activeIndex === index">
+        <img class="slide-image" src="{{ carouselConfig.img }}">
+        <div class="slide-details">
+            <p class="slide-text">{{ carouselConfig.text }}</p>
+        </div>
+    </div>
+    }
+</div>
+<a class="prev" (click)="nextImage(-1)">&#10094;</a>
+<a class="next" (click)="nextImage(1)">&#10095;</a>

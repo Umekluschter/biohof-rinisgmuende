@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    --color-background: #fefdf9;
+    --color-background-rgb: 254, 253, 249;
+    --color-text-light: #fefdf9;
+    --color-text-dark: #19200c;
+    --color-brown: #675d39;
+    --color-brown-rgb: 103, 93, 57;
+    --color-green: #81a140;
+}
+
+body {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-background);
+}
