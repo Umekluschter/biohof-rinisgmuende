@@ -53,5 +53,15 @@
                 transform-origin: bottom left;
             }
         }
+
+        &.active {
+            color: var(--color-green);
+
+            &::after {
+                background-color: var(--color-green);
+                transform: scaleX(1);
+                transform-origin: bottom left;
+            }
+        }
     }
 }
