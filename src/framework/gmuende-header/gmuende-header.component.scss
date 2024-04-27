@@ -9,12 +9,15 @@
 }
 
 .logo-container {
-    width: 4rem;
-    height: 3rem;
+    cursor: pointer;
+    background-color: var(--color-background);
+    padding: 0.15rem;
+    border-radius: 50%;
 
     .logo {
-        width: 100%;
-        height: 100%;
+        width: 2.75rem;
+        height: 2.75rem;
+        object-fit: contain;
     }
 }
 

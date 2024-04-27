@@ -19,7 +19,7 @@ export class GmuendeHeaderComponent implements OnInit {
   public ngOnInit(): void {
     this.router.url.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((url: UrlSegment[]) => {
       console.log(url);
-    
+
       // this.url = url;
     }
     )

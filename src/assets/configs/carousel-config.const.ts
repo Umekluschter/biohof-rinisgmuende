@@ -5,7 +5,7 @@ export interface CarouselConfig {
 
 export const CarouselConfig: CarouselConfig[] = [
     {
-        img: '../../assets/images/cow2.jpg',
+        img: '../../assets/images/1714167866795.jpg',
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     },
     {
