@@ -1,11 +1,11 @@
 import { Component, DestroyRef, OnInit, inject } from '@angular/core';
-import { ActivatedRoute, UrlSegment } from '@angular/router';
+import { ActivatedRoute, RouterLink, UrlSegment } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'gmuende-header',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './gmuende-header.component.html',
   styleUrl: './gmuende-header.component.scss'
 })
