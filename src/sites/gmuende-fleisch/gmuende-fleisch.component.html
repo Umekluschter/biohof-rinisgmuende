@@ -1,1 +1,19 @@
-<p>gmuende-fleisch works!</p>
+<div class="bg-image">
+    <div class="container">
+        <div class="title">
+            <span class="title-link text-semibold" (click)="activeTab = 'wissen'">Wissenwertes</span>
+            <span>|</span>
+            <span class="title-link text-semibold" (click)="activeTab = 'bestellen'">Fleisch Bestellen</span>
+        </div>
+        <div class="content">
+            @switch (activeTab) {
+            @case ('wissen') {
+            <span>Wissen</span>
+            }
+            @case ('bestellen') {
+            <span>Bestellen</span>
+            }
+            }
+        </div>
+    </div>
+</div>

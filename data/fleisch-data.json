@@ -1,0 +1,56 @@
+{
+    "Mischpakete": [
+        {
+            "5kg": {
+                "Preis": "6.-"
+            }
+        },
+        {
+            "10kg": {
+                "Preis": "16.-"
+            }
+        },
+        {
+            "15kg": {
+                "Preis": "26.-"
+            }
+        }
+    ],
+    "Trockenfleisch": [
+        {
+            "Fleischkäsel": {
+                "Preis": "7.-"
+            }
+        },
+        {
+            "Rindsbraten": {
+                "Preis": "7.-"
+            }
+        },
+        {
+            "Rindshaxen": {
+                "Preis": "7.-"
+            }
+        },
+        {
+            "Rindsleber": {
+                "Preis": "7.-"
+            }
+        },
+        {
+            "Hackfleisch": {
+                "Preis": "7.-"
+            }
+        },
+        {
+            "Geschnetzeltes": {
+                "Preis": "7.-"
+            }
+        },
+        {
+            "Voressen": {
+                "Preis": "7.-"
+            }
+        }
+    ]
+}
