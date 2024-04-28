@@ -46,3 +46,25 @@ body {
     font-weight: 700;
     font-style: italic;
 }
+
+// Scrollbar
+
+/* width */
+::-webkit-scrollbar {
+    width: 0.375rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(var(--color-brown-rgb), 0.6);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(var(--color-brown-rgb), 0.9);
+}
