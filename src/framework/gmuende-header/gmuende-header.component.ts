@@ -20,11 +20,13 @@ export class GmuendeHeaderComponent {
   public constructor() {
     const scrollEvent = fromEvent(window, 'scroll', { capture: true }).pipe(
       map(() => document.documentElement.scrollTop > 50),
+      distinctUntilChanged(),
       takeUntilDestroyed(),
     );
 
     const mouseEvent = fromEvent<MouseEvent>(window, 'mousemove').pipe(
       map((event) => event.clientY > 100),
+      distinctUntilChanged(),
       takeUntilDestroyed(),
     );
 

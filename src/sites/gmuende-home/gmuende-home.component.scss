@@ -15,7 +15,8 @@
         width: 100%;
         text-align: center;
 
-        .border {
+        .caption-text {
+            user-select: none;
             color: var(--color-text-light);
             padding: 1rem;
             font-size: 3rem;
@@ -29,6 +30,20 @@
 .image-1 {
     background-image: url(../../assets/images/1714167866795.jpg);
     min-height: 100dvh;
+
+    .arrow {
+        position: absolute;
+        bottom: 5dvh;
+        left: 50%;
+        color: var(--color-text-light);
+        opacity: 1;
+        transition: opacity 0.3s;
+        animation: 1.5s ease-in-out infinite alternate arrow-animation;
+
+        &.hide {
+            opacity: 0;
+        }
+    }
 }
 
 .text-1 {
@@ -60,5 +75,25 @@ h1 {
     ul {
         padding-left: 1.25rem;
         margin: 0;
+    }
+}
+
+@keyframes arrow-animation {
+    from {
+        transform: translateY(0%);
+    }
+
+    to {
+        transform: translateY(1rem);
+    }
+}
+
+@keyframes arrow-fade-out-animation {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
     }
 }
