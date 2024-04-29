@@ -1,0 +1,79 @@
+:host {
+    position: relative;
+}
+
+.bg-image {
+    object-fit: contain;
+    opacity: 0.9;
+
+    position: relative;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .caption {
+        user-select: none;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 100%;
+        text-align: center;
+
+        .border {
+            color: var(--color-text-light);
+            padding: 1rem;
+            font-size: 3rem;
+            letter-spacing: 0.1rem;
+            font-weight: 700;
+            border-radius: 8px;
+        }
+    }
+}
+
+.image-1 {
+    background-image: url(../../assets/images/hofladen/1714162402904.jpg);
+    min-height: 70dvh;
+}
+
+.zeiten-container {
+    position: absolute;
+    right: 5dvw;
+    bottom: -6px;
+    padding: 0.75rem;
+    background-color: var(--color-background);
+    border-radius: 6px;
+
+    .list {
+        display: flex;
+        justify-content: space-between;
+        gap: 2rem;
+    }
+
+    .tage,
+    .zeiten {
+        display: flex;
+        flex-direction: column;
+        text-rendering: auto;
+    }
+}
+
+.content {
+    display: flex;
+    gap: 1rem;
+
+    .text-1 {
+        padding: 1.5rem 0 1.5rem 1.5rem;
+    }
+
+    .map-container {
+        padding: 1.5rem 1.5rem 1.5rem 0;
+
+        .map {
+            width: 30dvw;
+            height: 30dvh;
+            background-color: var(--color-green);
+        }
+    }
+
+}

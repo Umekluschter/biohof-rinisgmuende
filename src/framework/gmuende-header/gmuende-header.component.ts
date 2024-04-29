@@ -12,9 +12,14 @@ import { combineLatest, debounceTime, distinctUntilChanged, filter, fromEvent, m
 })
 export class GmuendeHeaderComponent {
   public collapsed = false;
+  public highlighted = false;
 
   @HostBinding('class.collapsed') get _collapsed() {
     return this.collapsed;
+  }
+
+  @HostBinding('class.highlighted') get _highlighted() {
+    return this.highlighted;
   }
 
   public constructor() {
@@ -29,6 +34,8 @@ export class GmuendeHeaderComponent {
       distinctUntilChanged(),
       takeUntilDestroyed(),
     );
+
+    mouseEvent.pipe(takeUntilDestroyed()).subscribe((mouse) => this.highlighted = !mouse);
 
     combineLatest([scrollEvent, mouseEvent]).pipe(
       takeUntilDestroyed(),

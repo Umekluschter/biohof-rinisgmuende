@@ -1,7 +1,9 @@
 :host {
     height: 3rem;
     width: -webkit-fill-available;
-    background-image: linear-gradient(rgba(var(--color-brown-rgb), 0.6) 0%, rgba(0, 0, 0, 0) 50%);
+    background-image: linear-gradient(rgba(var(--color-brown-rgb), 0.6) 20%, rgba(0, 0, 0, 0) 50%);
+    background-size: auto 200%;
+    background-position-y: center;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -9,10 +11,14 @@
     gap: 2rem;
     position: fixed;
     z-index: 100;
-    transition: transform 0.3s;
+    transition: all 0.3s;
 
     &.collapsed {
         transform: translateY(-100%);
+    }
+
+    &.highlighted {
+        background-position-y: top;
     }
 }
 
@@ -42,7 +48,24 @@
         position: relative;
         color: var(--color-text-light);
         font-size: 1.125rem;
+    }
 
+    .link-button {
+        cursor: pointer;
+        background-color: var(--color-blue);
+        border: none;
+        padding: 0.75rem;
+        color: var(--color-text-light);
+        font-size: 1.125rem;
+        border-radius: 6px;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: var(--color-green-dark);
+        }
+    }
+
+    .underline-hover {
         &::after {
             content: '';
             position: absolute;

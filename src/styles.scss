@@ -6,6 +6,8 @@
     --color-brown: #675d39;
     --color-brown-rgb: 103, 93, 57;
     --color-green: #96BB4D;
+    --color-green-dark: #87a846;
+    --color-blue: #002A32;
 }
 
 body {
@@ -45,6 +47,12 @@ body {
 .text-bold-italic {
     font-weight: 700;
     font-style: italic;
+}
+
+h1 {
+    font-size: 1.75rem;
+    margin: 0 0 0.5rem;
+    line-height: 1.75rem;
 }
 
 // Scrollbar
