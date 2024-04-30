@@ -11,10 +11,13 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   styleUrl: './gmuende-home.component.scss'
 })
 export class GmuendeHomeComponent {
+  public scrollOffset = '0px';
   private readonly arrow = viewChild.required<ElementRef>('arrow');
 
   constructor() {
-    fromEvent(window, 'scroll', { capture: true }).pipe(
+    const scrollEvent = fromEvent(window, 'scroll', { capture: true });
+
+    scrollEvent.pipe(
       map(() => document.documentElement.scrollTop > 75),
       distinctUntilChanged(),
       takeUntilDestroyed(),
@@ -25,5 +28,9 @@ export class GmuendeHomeComponent {
         this.arrow().nativeElement.classList.remove('hide');
       }
     });
+
+    scrollEvent
+      .pipe(takeUntilDestroyed())
+      .subscribe(() => this.scrollOffset = `-${document.documentElement.scrollTop / 3}px`);
   }
 }

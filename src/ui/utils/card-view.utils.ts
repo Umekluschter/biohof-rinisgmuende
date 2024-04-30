@@ -14,6 +14,6 @@ export const convertFleischDataToCardData = (fleischData: any): CardData[] => {
 
 const convertItemToCardData = (item: any): CardData => ({
     img: '',
-    text: item,
+    label: item,
     price: item['Preis'],
 })

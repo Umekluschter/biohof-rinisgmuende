@@ -1,5 +1,6 @@
 export interface CardData {
     img: string;
-    text: string;
-    price: string;
+    label: string;
+    price: number;
+    info?: string;
 }

@@ -1,7 +1,7 @@
-import { Component, DestroyRef, HostBinding, OnInit, inject } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { combineLatest, debounceTime, distinctUntilChanged, filter, fromEvent, map, switchMap } from 'rxjs';
+import { combineLatest, distinctUntilChanged, fromEvent, map } from 'rxjs';
 
 @Component({
   selector: 'gmuende-header',
