@@ -1,11 +1,12 @@
-<div class="bg-image"></div>
-<span class="title text-bold">Bestellen</span>
-<div class="container">
-    <div class="header">
-        <!-- Search-Input -->
-        <!-- Criteria Search -->
-    </div>
+<div class="bg-image">
     <div class="content">
-        <gmuende-card-view [cardData]="data"></gmuende-card-view>
+        <span class="title text-bold">Bestellen</span>
+        <div class="header">
+            <input type="text" class="search" (keyup)="search($event)">
+            <!-- Criteria Search -->
+        </div>
+        <div class="container">
+            <gmuende-card-view [cardData]="data" [searchText]="searchText"></gmuende-card-view>
+        </div>
     </div>
 </div>

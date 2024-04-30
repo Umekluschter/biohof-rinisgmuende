@@ -82,5 +82,11 @@ export class GmuendeBestellenComponent {
     //   label: "Voressen",
     //   price: 7
     // }
-  ]
+  ];
+
+  public searchText = '';
+
+  public search(event: any): void {
+    this.searchText = event.target.value;
+  }
 }
