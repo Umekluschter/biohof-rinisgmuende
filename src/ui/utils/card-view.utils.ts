@@ -1,7 +1,7 @@
-import { CardData } from "../interfaces/card-data.interface"
+import { ItemData } from "../interfaces/item-data.interface"
 
-export const convertFleischDataToCardData = (fleischData: any): CardData[] => {
-    const cards: CardData[] = [];
+export const convertFleischDataToCardData = (fleischData: any): ItemData[] => {
+    const cards: ItemData[] = [];
 
     fleischData.forEach((category: any) => {
         category.forEach((item: any) => {
@@ -12,7 +12,7 @@ export const convertFleischDataToCardData = (fleischData: any): CardData[] => {
     return cards;
 }
 
-const convertItemToCardData = (item: any): CardData => ({
+const convertItemToCardData = (item: any): ItemData => ({
     img: '',
     label: item,
     price: item['Preis'],

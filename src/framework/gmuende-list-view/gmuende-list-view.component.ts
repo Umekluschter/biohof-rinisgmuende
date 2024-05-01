@@ -1,7 +1,7 @@
 import { Component, computed, input, output } from '@angular/core';
-import { CardData } from '../../ui/interfaces/card-data.interface';
+import { ItemData } from '../../ui/interfaces/item-data.interface';
 
-interface ItemWithAmount extends CardData {
+interface ItemWithAmount extends ItemData {
   amount: number;
 }
 
@@ -13,9 +13,9 @@ interface ItemWithAmount extends CardData {
   styleUrl: './gmuende-list-view.component.scss'
 })
 export class GmuendeListViewComponent {
-  public items = input.required<CardData[]>();
+  public items = input.required<ItemData[]>();
 
-  public removeItem = output<CardData>();
+  public removeItem = output<ItemData>();
 
   public itemsWithAmounts = computed<ItemWithAmount[]>(() => {
     const items = this.items();

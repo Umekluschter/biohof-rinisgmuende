@@ -1,5 +1,5 @@
 import { Component, computed, input, output } from '@angular/core';
-import { CardData } from '../../ui/interfaces/card-data.interface';
+import { ItemData } from '../../ui/interfaces/item-data.interface';
 
 @Component({
   selector: 'gmuende-card-view',
@@ -9,19 +9,19 @@ import { CardData } from '../../ui/interfaces/card-data.interface';
   styleUrl: './gmuende-card-view.component.scss'
 })
 export class GmuendeCardViewComponent {
-  public cardData = input.required<CardData[]>();
+  public items = input.required<ItemData[]>();
   public searchText = input<string>('');
 
-  public addToCart = output<CardData>();
+  public addToCart = output<ItemData>();
 
-  public cardDataSignal = computed<CardData[]>(() => {
-    const cardData = this.cardData();
-    const seachText = this.searchText();
+  public cardDataSignal = computed<ItemData[]>(() => {
+    const items = this.items();
+    const searchText = this.searchText();
 
-    if (seachText === '') {
-      return cardData;
+    if (searchText === '') {
+      return items;
     }
 
-    return cardData.filter((card) => card.label.toLowerCase().includes(seachText.toLowerCase()));
+    return items.filter((item) => item.label.toLowerCase().includes(searchText.toLowerCase()));
   });
 }

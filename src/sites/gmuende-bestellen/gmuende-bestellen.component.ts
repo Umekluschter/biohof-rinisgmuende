@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { GmuendeCardViewComponent } from '../../framework/gmuende-card-view/gmuende-card-view.component';
-import { CardData } from '../../ui/interfaces/card-data.interface';
+import { ItemData } from '../../ui/interfaces/item-data.interface';
 import { GmuendeListViewComponent } from '../../framework/gmuende-list-view/gmuende-list-view.component';
 
 type SubPage = 'shop' | 'shopping-cart';
@@ -13,7 +13,7 @@ type SubPage = 'shop' | 'shopping-cart';
   styleUrl: './gmuende-bestellen.component.scss'
 })
 export class GmuendeBestellenComponent {
-  public data: CardData[] = [
+  public items: ItemData[] = [
     {
       img: '../../assets/images/fleisch/1714162635934.jpg',
       label: "Fleischkäsel",
@@ -89,18 +89,18 @@ export class GmuendeBestellenComponent {
 
   public titleText = 'Online Hofladen';
   public searchText = '';
-  public shoppingCartItems: CardData[] = [];
+  public shoppingCartItems: ItemData[] = [];
   public currentSubPage: 'shop' | 'shopping-cart' = 'shop';
 
   public search(event: any): void {
     this.searchText = event.target.value;
   }
 
-  public addToCart(card: CardData): void {
-    this.shoppingCartItems.push(card);
+  public addItemToCart(item: ItemData): void {
+    this.shoppingCartItems.push(item);
   }
 
-  public removeItem(item: CardData): void {
+  public removeItem(item: ItemData): void {
     this.shoppingCartItems = this.shoppingCartItems.filter((i) => JSON.stringify(i) !== JSON.stringify(item));
   }
 
