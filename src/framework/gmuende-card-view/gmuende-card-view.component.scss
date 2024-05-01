@@ -14,6 +14,7 @@
 
     &:hover {
         background-color: rgba(var(--color-green-rgb), 0.1);
+        box-shadow: 0 -1px 0 var(--color-green), 0 1px 0 var(--color-green);
     }
 
     .image {

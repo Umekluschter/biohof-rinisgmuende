@@ -1,10 +1,10 @@
 <div class="bg-image">
     <div class="content">
-        <span class="title text-bold">Bestellen</span>
+        <span class="title text-bold">{{ titleText }}</span>
         <div class="header">
             <input type="text" placeholder="Suchen.." class="search" (keyup)="search($event)">
             <!-- Criteria Search -->
-            <div class="shopping-cart">
+            <div class="shopping-cart" (click)="showSubPage('shopping-cart')">
                 @if (shoppingCartItems.length > 0) {
                 <span class="shopping-cart-notification">{{ shoppingCartItems.length }}</span>
                 }
@@ -19,8 +19,20 @@
             </div>
         </div>
         <div class="container">
+            @if (currentSubPage === 'shop') {
             <gmuende-card-view [cardData]="data" [searchText]="searchText"
                 (addToCart)="addToCart($event)"></gmuende-card-view>
+            } @else if (currentSubPage === 'shopping-cart') {
+            <div class="navigation" (click)="showSubPage('shop')">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        d="M0.729984 5.756544L11.632512 18.078143999999998C11.827487999999999 18.29856 12.171456 18.29856 12.366527999999999 18.078143999999998L23.270016 5.756544"
+                        stroke-width="2"></path>
+                </svg>
+                Zurück zum Shop
+            </div>
+            <gmuende-list-view [items]="shoppingCartItems" (removeItem)="removeItem($event)"></gmuende-list-view>
+            }
         </div>
     </div>
 </div>

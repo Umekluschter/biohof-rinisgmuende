@@ -1,5 +1,5 @@
 import { Component, computed, input, output } from '@angular/core';
-import { CardData } from '../interfaces/card-data.interface';
+import { CardData } from '../../ui/interfaces/card-data.interface';
 
 @Component({
   selector: 'gmuende-card-view',

@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
-import { GmuendeCardViewComponent } from '../../ui/gmuende-card-view/gmuende-card-view.component';
+import { GmuendeCardViewComponent } from '../../framework/gmuende-card-view/gmuende-card-view.component';
 import { CardData } from '../../ui/interfaces/card-data.interface';
+import { GmuendeListViewComponent } from '../../framework/gmuende-list-view/gmuende-list-view.component';
+
+type SubPage = 'shop' | 'shopping-cart';
 
 @Component({
   selector: 'gmuende-bestellen',
   standalone: true,
-  imports: [GmuendeCardViewComponent],
+  imports: [GmuendeCardViewComponent, GmuendeListViewComponent],
   templateUrl: './gmuende-bestellen.component.html',
   styleUrl: './gmuende-bestellen.component.scss'
 })
@@ -84,8 +87,10 @@ export class GmuendeBestellenComponent {
     // }
   ];
 
+  public titleText = 'Online Hofladen';
   public searchText = '';
   public shoppingCartItems: CardData[] = [];
+  public currentSubPage: 'shop' | 'shopping-cart' = 'shop';
 
   public search(event: any): void {
     this.searchText = event.target.value;
@@ -93,5 +98,25 @@ export class GmuendeBestellenComponent {
 
   public addToCart(card: CardData): void {
     this.shoppingCartItems.push(card);
+  }
+
+  public removeItem(item: CardData): void {
+    this.shoppingCartItems = this.shoppingCartItems.filter((i) => JSON.stringify(i) !== JSON.stringify(item));
+  }
+
+  public showSubPage(subPage: SubPage): void {
+    if (subPage === 'shopping-cart' && this.shoppingCartItems.length === 0) {
+      return;
+    }
+
+    switch (subPage) {
+      case 'shop':
+        this.titleText = 'Online Hofladen';
+        break;
+      case 'shopping-cart':
+        this.titleText = 'Warenkorb';
+        break;
+    }
+    this.currentSubPage = subPage;
   }
 }
