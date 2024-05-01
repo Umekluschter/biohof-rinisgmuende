@@ -85,8 +85,13 @@ export class GmuendeBestellenComponent {
   ];
 
   public searchText = '';
+  public shoppingCartItems: CardData[] = [];
 
   public search(event: any): void {
     this.searchText = event.target.value;
+  }
+
+  public addToCart(card: CardData): void {
+    this.shoppingCartItems.push(card);
   }
 }

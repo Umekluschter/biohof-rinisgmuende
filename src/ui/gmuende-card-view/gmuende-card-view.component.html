@@ -1,5 +1,5 @@
 @for (card of cardDataSignal(); track $index) {
-<div class="article">
+<div class="article" (click)="addToCart.emit(card)">
     <img class="image" [src]="card.img">
     <span class="price text-semibold">{{ card.price }} CHF</span>
     <div class="label-container">

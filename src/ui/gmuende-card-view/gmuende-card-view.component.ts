@@ -1,4 +1,4 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, input, output } from '@angular/core';
 import { CardData } from '../interfaces/card-data.interface';
 
 @Component({
@@ -12,6 +12,8 @@ export class GmuendeCardViewComponent {
   public cardData = input.required<CardData[]>();
   public searchText = input<string>('');
 
+  public addToCart = output<CardData>();
+
   public cardDataSignal = computed<CardData[]>(() => {
     const cardData = this.cardData();
     const seachText = this.searchText();
@@ -21,5 +23,5 @@ export class GmuendeCardViewComponent {
     }
 
     return cardData.filter((card) => card.label.toLowerCase().includes(seachText.toLowerCase()));
-  })
+  });
 }

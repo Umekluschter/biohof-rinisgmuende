@@ -26,20 +26,56 @@
 
     .header {
         width: 80dvw;
-        height: 3rem;
+        height: 4rem;
         background-color: var(--color-background);
         border-radius: 6px 6px 0 0;
+        border: 1px solid var(--color-green);
+        border-bottom: none;
 
         display: flex;
         align-items: center;
+        justify-content: space-between;
 
         .search {
             font-family: "Poppins", sans-serif;
-            border: 1px solid var(--color-text-dark);
+            font-size: 1rem;
+            border: 1px solid var(--color-green-dark);
+            outline-style: none;
             border-radius: 6px;
-            line-height: 1rem;
+            line-height: 1.5rem;
             padding: 0.25rem 0 0.25rem 0.5rem;
-            margin-left: 0.75rem;
+            margin-left: 1rem;
+            color: var(--color-green-darker);
+
+            &:focus {
+                border: 1px solid var(--color-green-darker);
+            }
+        }
+
+        .shopping-cart {
+            height: 1.5rem;
+            width: 1.5rem;
+            padding-right: 1rem;
+            cursor: pointer;
+            position: relative;
+
+            &:hover {
+                color: var(--color-green-darker);
+            }
+
+            .shopping-cart-notification {
+                height: 1rem;
+                width: 1rem;
+                position: absolute;
+                top: -0.35rem;
+                right: 0.75rem;
+                border-radius: 50%;
+
+                background-color: rgb(253, 62, 62);
+                font-size: 0.75rem;
+                color: var(--color-text-light);
+                text-align: center;
+            }
         }
     }
 
