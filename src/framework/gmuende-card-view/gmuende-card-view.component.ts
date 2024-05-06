@@ -1,5 +1,5 @@
 import { Component, computed, input, output } from '@angular/core';
-import { ItemData } from '../../ui/interfaces/item-data.interface';
+import { ItemData, ItemWithAmount } from '../../components/interfaces/item-data.interface';
 
 @Component({
   selector: 'gmuende-card-view',
@@ -12,7 +12,7 @@ export class GmuendeCardViewComponent {
   public items = input.required<ItemData[]>();
   public searchText = input<string>('');
 
-  public addToCart = output<ItemData>();
+  public addToCart = output<ItemWithAmount>();
 
   public cardDataSignal = computed<ItemData[]>(() => {
     const items = this.items();

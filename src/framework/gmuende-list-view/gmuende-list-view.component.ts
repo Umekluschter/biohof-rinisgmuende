@@ -1,9 +1,5 @@
-import { Component, computed, input, output } from '@angular/core';
-import { ItemData } from '../../ui/interfaces/item-data.interface';
-
-interface ItemWithAmount extends ItemData {
-  amount: number;
-}
+import { Component, computed, input, output, signal } from '@angular/core';
+import { ItemData, ItemWithAmount } from '../../components/interfaces/item-data.interface';
 
 @Component({
   selector: 'gmuende-list-view',
@@ -13,37 +9,57 @@ interface ItemWithAmount extends ItemData {
   styleUrl: './gmuende-list-view.component.scss'
 })
 export class GmuendeListViewComponent {
-  public items = input.required<ItemData[]>();
+  public items = input.required<ItemWithAmount[]>();
 
-  public removeItem = output<ItemData>();
+  public addItem = output<ItemWithAmount>();
+  public removeItem = output<ItemWithAmount>();
 
-  public itemsWithAmounts = computed<ItemWithAmount[]>(() => {
-    const items = this.items();
-    const amounts: {
-      [key: string]: number,
-    } = {};
+  // public itemsWithAmounts = computed<ItemWithAmount[]>(() => {
+  //   const items = this.itemsSignal();
+  //   console.log('itemsWithAmounts', items);
 
-    items.forEach((i) => amounts[i.label] = (amounts[i.label] || 0) + 1);
+  //   const amounts: {
+  //     [key: string]: number,
+  //   } = {};
 
-    return items.map<ItemWithAmount>(({ img, label, price, info }) => ({
-      img: img,
-      label: label,
-      price: price * amounts[label] || 1,
-      info: info,
-      amount: amounts[label]
-    })).reduce<ItemWithAmount[]>((acc, curr) => JSON.stringify(acc).includes(JSON.stringify(curr)) ? acc : [...acc, curr], []);
-  });
+  //   items.forEach((i) => amounts[i.label] = (amounts[i.label] || 0) + 1);
+
+  //   console.log(amounts);
+
+
+  //   return items.map<ItemWithAmount>(({ img, label, price, info }) => ({
+  //     img: img,
+  //     label: label,
+  //     price: price * amounts[label] || 1,
+  //     info: info,
+  //     amount: amounts[label]
+  //   })).reduce<ItemWithAmount[]>((acc, curr) => JSON.stringify(acc).includes(JSON.stringify(curr)) ? acc : [...acc, curr], []);
+  // });
 
   public totalCost = computed<number>(() => {
-    return this.itemsWithAmounts().map((item) => item.price).reduce((acc, curr) => acc += curr, 0);
+    return this.items().map((item) => item.price).reduce((acc, curr) => acc += curr, 0);
   });
 
-  public emitRemoveItem({ img, label, price, info }: ItemWithAmount): void {
-    this.removeItem.emit({
-      img,
-      label,
-      price,
-      info
-    });
+  // private itemsSignal = signal<ItemWithAmount[]>([]);
+
+  public changeAmount(item: ItemWithAmount, delta: number): void {
+    // item.amount += delta;
+
+    if (delta > 0) {
+      this.emitAddItem(item);
+      return;
+    }
+
+    this.emitRemoveItem(item);
+  }
+
+  public emitAddItem(item: ItemWithAmount): void {
+    // this.itemsSignal.update(v => [...v, item]);
+    this.addItem.emit(item);
+  }
+
+  public emitRemoveItem(item: ItemWithAmount): void {
+    // this.itemsSignal.update(v => v.filter(i => JSON.stringify(i) !== JSON.stringify(item)));
+    this.removeItem.emit(item);
   }
 }

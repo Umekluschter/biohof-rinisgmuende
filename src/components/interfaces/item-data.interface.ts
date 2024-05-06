@@ -4,3 +4,7 @@ export interface ItemData {
     price: number;
     info?: string;
 }
+
+export interface ItemWithAmount extends ItemData {
+    amount: number;
+}

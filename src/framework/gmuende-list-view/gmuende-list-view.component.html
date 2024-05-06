@@ -1,4 +1,4 @@
-@if (itemsWithAmounts().length > 0) {
+@if (items().length > 0) {
 <table class="article-table">
     <thead>
         <th>Foto</th>
@@ -8,13 +8,19 @@
         <th></th>
     </thead>
     <tbody>
-        @for (item of itemsWithAmounts(); track $index) {
+        @for (item of items(); track $index) {
         <tr>
             <td>
                 <img class="image" [src]="item.img">
             </td>
             <td>{{ item.label }}</td>
-            <td>{{ item.amount }}</td>
+            <td>
+                <div class="amount-container">
+                    <span [class.last-item]="item.amount === 1" (click)="changeAmount(item, -1)">-</span>
+                    <span class="amount">{{ item.amount }}</span>
+                    <span (click)="changeAmount(item, 1)">+</span>
+                </div>
+            </td>
             <td>{{ item.price }} CHF</td>
             <td>
                 <div class="delete" (click)="emitRemoveItem(item)">
@@ -50,5 +56,5 @@
 </table>
 <div class="buttons"></div>
 } @else {
-<span class="empty">Ihr Warenkorb ist leer.</span>
+<span class="empty text-bold">Ihr Warenkorb ist leer.</span>
 }

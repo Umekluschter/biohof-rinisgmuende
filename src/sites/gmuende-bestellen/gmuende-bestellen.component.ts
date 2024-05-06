@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { GmuendeCardViewComponent } from '../../framework/gmuende-card-view/gmuende-card-view.component';
-import { ItemData } from '../../ui/interfaces/item-data.interface';
+import { ItemData, ItemWithAmount } from '../../components/interfaces/item-data.interface';
 import { GmuendeListViewComponent } from '../../framework/gmuende-list-view/gmuende-list-view.component';
+import { convertDataToItemWithAmounts } from '../../components/utils/utils';
 
 type SubPage = 'shop' | 'shopping-cart';
 
@@ -13,7 +14,7 @@ type SubPage = 'shop' | 'shopping-cart';
   styleUrl: './gmuende-bestellen.component.scss'
 })
 export class GmuendeBestellenComponent {
-  public items: ItemData[] = [
+  private itemData: ItemData[] = [
     {
       img: '../../assets/images/fleisch/1714162635934.jpg',
       label: "Fleischkäsel",
@@ -87,21 +88,44 @@ export class GmuendeBestellenComponent {
     // }
   ];
 
+  public items: ItemWithAmount[] = [];
+
+  public constructor() {
+    this.items = convertDataToItemWithAmounts(this.itemData);
+  }
+
   public titleText = 'Online Hofladen';
   public searchText = '';
-  public shoppingCartItems: ItemData[] = [];
+  public shoppingCartItems: ItemWithAmount[] = [];
+  public shoppingCartItemAmount = signal<number>(0);
   public currentSubPage: 'shop' | 'shopping-cart' = 'shop';
 
   public search(event: any): void {
     this.searchText = event.target.value;
   }
 
-  public addItemToCart(item: ItemData): void {
-    this.shoppingCartItems.push(item);
+  public addItemToCart(item: ItemWithAmount): void {
+    const itemInList = this.shoppingCartItems.find((i) => i.label === item.label);
+
+    if (itemInList !== undefined) {
+      itemInList.amount += 1;
+    } else {
+      this.shoppingCartItems.push({ ...item, amount: 1 });
+    }
+
+    this.shoppingCartItemAmount.update(v => v += 1);
   }
 
-  public removeItem(item: ItemData): void {
-    this.shoppingCartItems = this.shoppingCartItems.filter((i) => JSON.stringify(i) !== JSON.stringify(item));
+  public removeItem(item: ItemWithAmount): void {
+    const itemInList = this.shoppingCartItems.find((i) => i.label === item.label);
+
+    if (itemInList!.amount > 1) {
+      itemInList!.amount -= 1;
+    } else {
+      this.shoppingCartItems = this.shoppingCartItems.filter((i) => i.label !== item.label);
+    }
+
+    this.shoppingCartItemAmount.update(v => v -= 1);
   }
 
   public showSubPage(subPage: SubPage): void {

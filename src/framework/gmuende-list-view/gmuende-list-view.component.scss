@@ -6,8 +6,8 @@
 
 .empty {
     font-size: 1.75rem;
-    font-weight: 800;
     text-align: center;
+    margin: 5dvh 0 5dvh;
 }
 
 .article-table {
@@ -64,6 +64,14 @@
 
         &:hover {
             background-color: rgba(var(--color-green-rgb), 0.2);
+
+            .amount-container>span:not(.amount) {
+                background-color: var(--color-grey-dark);
+
+                &.last-item {
+                    background-color: rgba(var(--color-red-rgb), 0.4);
+                }
+            }
         }
 
         &>td:has(.image) {
@@ -77,6 +85,28 @@
         width: 5rem;
         height: 4rem;
         object-fit: cover;
+    }
+
+    .amount-container {
+        display: flex;
+        align-items: center;
+
+        span:not(.amount) {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 1.5rem;
+            width: 1.5rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .amount {
+            width: 2.5rem;
+            text-align: center;
+        }
     }
 
     .delete {

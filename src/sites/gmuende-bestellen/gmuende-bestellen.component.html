@@ -5,8 +5,8 @@
             <input type="text" placeholder="Suchen.." class="search" (keyup)="search($event)">
             <!-- Criteria Search -->
             <div class="shopping-cart" (click)="showSubPage('shopping-cart')">
-                @if (shoppingCartItems.length > 0) {
-                <span class="shopping-cart-notification">{{ shoppingCartItems.length }}</span>
+                @if (shoppingCartItemAmount() > 0) {
+                <span class="shopping-cart-notification text-semibold">{{ shoppingCartItemAmount() }}</span>
                 }
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.625 -0.625 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -31,7 +31,8 @@
                 </svg>
                 Zurück zum Shop
             </div>
-            <gmuende-list-view [items]="shoppingCartItems" (removeItem)="removeItem($event)"></gmuende-list-view>
+            <gmuende-list-view [items]="shoppingCartItems" (addItem)="addItemToCart($event)"
+                (removeItem)="removeItem($event)"></gmuende-list-view>
             }
         </div>
     </div>
